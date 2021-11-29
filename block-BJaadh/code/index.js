@@ -29,13 +29,14 @@ strings.indexOf('is')
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
 numbers.every((Number) => Number % 3 === 0);
 // -  Sort Array from smallest to largest
-numbers.sort();
+numbers.sort((a,b) => a - b);
 // - Remove the last word in strings
 strings.pop()
 // - Find largest number in numbers
-numbers.
+let largest = numbers.sort((a,b) => a - b).pop();
 // - Find longest string in strings
-
+let largestString = strings.sort((a,b) => a.length - b.length).pop();
+ 
 // - Find all the even numbers
 function isEven(number){
   return number % 2 === 0;
@@ -51,7 +52,7 @@ strings.unshift("Vandana");
 // - Make a subset of numbers array [18,9,7,11]
 numbers.slice(3,7);
 // - Make a subset of strings array ['a','collection']
-strings.slice(2,4);
+strings.slice(3,5);
 // - Replace 12 & 18 with 1221 and 1881
 numbers.splice(1,1,1221)
 numbers.splice(3,1,1881)
@@ -68,13 +69,14 @@ var customers = [
   { firstname: 'Jack', lastname: 'White' },
 ];
 // - Find all customers whose firstname starts with 'J'
-customers.filter((customer) => customer.firstname.startsWith("J"));
+let firstName = customers.filter((customer) => customer.firstname.startsWith("J"));
 // - Create new array with only first name
-
+let firstnameCustomer = customers.map((customer) => customer.firstname);
 // - Create new array with all the full names (ex: "Joe Blogs")
-
+let fullnameCustomer = customers.map((customer) =>
+`${customers.firstname} ${customers.lastname}` );
 // - Sort the array created above alphabetically
-
+[...fullnameCustomer].sort();
 // - Create a new array that contains only user who has at least one vowel in the firstname.
 
 
