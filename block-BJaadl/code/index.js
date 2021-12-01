@@ -110,8 +110,11 @@ let strings = [
 // - Write a function averageWordLength that receives an array of words2 and calculate the average length of the words.
 
 function averageWordLength (words) {
-  return (words.map((word) => word.length).reduce((acc,cv) => {
-    acc = acc + cv;
-    return acc; },0) / words.length)};
+  return 
+  (words.map((word) => word.length)
+  .reduce((acc,cv) => {
+    return acc + cv;
+     },0) / words.length);}
+     
 
-    
+
