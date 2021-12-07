@@ -20,24 +20,36 @@ let peopleGrade = persons.map((person) => person.grade)
 let sum = peopleGrade.reduce((acc,cv) =>   acc + cv,0)
 let gradeAverage = sum /  peopleGrade.length; 
 
+or,
+
+let totalGrade = persons.reduce((acc,cv) => {
+  return acc + cv.grade;
+},0);
+console.log(totalGrade / persons.length)
+
 // Find the average grade of male
-let maleGrade = persons.filter((p) => p.sex == "M").map((person) => person.grade);
-let sum = maleGrade.reduce((acc,cv) => acc + cv)
-let maleAverage = sum / maleGrade.length
+let maleGrade = persons.filter((p) => p.sex == "M")
+.reduce((acc,cv) => {
+  return acc + cv.grade;
+},0)/ maleGrade.length;
 
 // Find the average grade of female
-let femaleGrade = persons.filter((p) => p.sex == "F").map((person) => person.grade);
-let sum = femaleGrade.reduce((acc,cv) => acc + cv)
-let femaleAverage = sum / femaleGrade.length
+let femaleGrade = persons.filter((p) => p.sex == "F").reduce((acc,cv) => {
+  return acc + cv.grade;
+},0)/ femaleGrade.length;
+
 // Find the highest grade
 
-peopleGrade.reduce
+let highestGrade = persons.map((person) => person.grade).sort((a,b) => a-b).pop()
 
 // Find the highest grade in male
 
-
+let highestGrade = persons.filter((p) => p.sex === "M")
+.map((person) => person.grade).sort((a,b) => a-b).pop();
 
 // Find the highest grade in female
+let highestGrade = persons.filter((p) => p.sex === "F")
+.map((person) => person.grade).sort((a,b) => a-b).pop();
 
 
 // Find the highest grade for people whose name starts with 'J' or 'P'
@@ -50,6 +62,8 @@ return acc;
 
 },[]);
 
+
+
 const fruitBasket = [
   'banana',
   'cherry',
@@ -59,7 +73,7 @@ const fruitBasket = [
   'orange',
   'apple',
   'banana',
-  'cherry',
+  'cherry', 
   'orange',
   'fig',
 ];
@@ -74,12 +88,13 @@ Output:
 */
 
 let fruitsObj = fruitBasket.reduce((acc,cv) => {
-  if(cv)
-})
-
-
-
-
+  if(acc[cv]){
+    acc[cv] = acc[cv] + 1;
+  }else {
+    acc[cv] = 1
+  }
+  return acc;
+},{})
 
 
 /* 
@@ -91,13 +106,12 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 
-
-let fruitBasket = Object.keys(fruitsObj).reduce((acc,cv) => acc.push([cv, fruitsObj])
-return acc;
-)
-
-
 */
+
+let fruitArray = Object.keys(fruitsObj).reduce((acc,cv) => {
+acc = acc.concat(([cv,fruitsObj[cv]]))
+return acc;
+},[]);
 
 
 const data = [
@@ -180,7 +194,13 @@ EXAMPLE:
   ...
 */
 
-let pipeline2 = [
+
+pipeline.reduce((acc,cv) => {
+  acc = cv(acc)
+  return acc;
+},3)
+
+
   increment,
   half,
   double,
@@ -196,4 +216,9 @@ let pipeline2 = [
 
 // Find the output using pipeline2 the initial value if 8
 
+
+pipeline2.reduce((acc,cv) => {
+  acc = cv(acc)
+  return acc;
+},8)
 
