@@ -16,18 +16,39 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
+let peopleGrade = persons.map((person) => person.grade)
+let sum = peopleGrade.reduce((acc,cv) =>   acc + cv,0)
+let gradeAverage = sum /  peopleGrade.length; 
 
 // Find the average grade of male
+let maleGrade = persons.filter((p) => p.sex == "M").map((person) => person.grade);
+let sum = maleGrade.reduce((acc,cv) => acc + cv)
+let maleAverage = sum / maleGrade.length
 
 // Find the average grade of female
-
+let femaleGrade = persons.filter((p) => p.sex == "F").map((person) => person.grade);
+let sum = femaleGrade.reduce((acc,cv) => acc + cv)
+let femaleAverage = sum / femaleGrade.length
 // Find the highest grade
+
+peopleGrade.reduce
 
 // Find the highest grade in male
 
+
+
 // Find the highest grade in female
 
+
 // Find the highest grade for people whose name starts with 'J' or 'P'
+
+let selectName = persons.reduce((acc,cv) => {
+if(cv.name[0].toUpperCase() === "J" || cv.name[0].toUpperCase() === "P") {
+  acc.push(cv);
+}
+return acc;
+
+},[]);
 
 const fruitBasket = [
   'banana',
@@ -52,6 +73,15 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
 
+let fruitsObj = fruitBasket.reduce((acc,cv) => {
+  if(cv)
+})
+
+
+
+
+
+
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -60,7 +90,15 @@ that fruit appeared. Use the variable defined above (fruitsObj). To get all the 
 Output: 
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
+
+
+let fruitBasket = Object.keys(fruitsObj).reduce((acc,cv) => acc.push([cv, fruitsObj])
+return acc;
+)
+
+
 */
+
 
 const data = [
   [1, 2, 3],
@@ -71,6 +109,8 @@ const data = [
 
 // Using reduce flat data array
 
+let flatArray = data.reduce((acc,cv) => acc.concat(cv.flat(Infinity)));
+
 const dataTwo = [
   [1, 2, 3],
   [4, 5, 6],
@@ -79,6 +119,9 @@ const dataTwo = [
 ];
 
 // Using reduce flat dataTwo array
+
+let flatArray = dataTwo.reduce((acc,cv) => acc.concat(cv.flat(Infinity)));
+
 
 /*
 
@@ -89,6 +132,28 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+
+function increment(num) {
+  return num + 1;
+}
+
+function decrement(num) {
+  return num - 1;
+}
+
+function double(num) {
+  return num * 2;
+}
+
+function triple(num) {
+  return num * 3;
+}
+
+function half(num) {
+  return Math.round(num / 2);
+}
+
+
 
 let pipeline = [
   increment,
@@ -130,3 +195,5 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
+
