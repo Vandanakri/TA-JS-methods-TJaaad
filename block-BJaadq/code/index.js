@@ -20,6 +20,8 @@ function countAllPeople(){
   return count;
 }
 
+
+
 function peopleByHouses() {
   let obj = {};
   got.houses.forEach((house) => {
@@ -38,6 +40,17 @@ function everyone() {
   return everyPerson;
 }
 
+or,
+
+function everyone() {
+  let everyPerson = [];
+    got.houses.forEach((house) => {
+      let peopleName = house.people.name((person) => person.name);
+      everyPerson = everyPerson.concat(peopleName)
+    });
+    return everyPerson;
+}
+
 function nameWithS() {
   let startWith = [];
   got.houses.forEach((house) => {
@@ -49,50 +62,33 @@ function nameWithS() {
   })
   return startWith;
 }
+or,
 
-function nameWithA() {
-  let startWith = [];
-  got.houses.forEach((house) => {
-    for(let i = 0; i < house.people.length; i++) {
-      if(house.people[i].name.toUpperCase().includes('A')) {
-        startWith.push(house.people[i].name);
-      }
-    }
-  })
-  return startWith;
+function nameWithS() {
+  let allPeople = everyone();
+  return allPeople.filter((name) => 
+  name.toUpperCase().includes("S"))
 }
 
-
+function nameWithA() {
+  let allPeople = everyone();
+  return allPeople.filter((name) => 
+  name.toUpperCase().includes("A"))
+}
 
 
 function surnameWithS() {
-  let surNameWithS = [];
-  got.houses.forEach((house) => {
-    for (let i = 0; i < house.people.length; i++) {
-      if (
-        house.people[i].name.split(" ")
-          [house.people[i].name.split(" ").length - 1].includes("S")
-      ) {
-        surNameWithS.push(house.people[i].name);
-      }
-    }
-  });
-  return surNameWithS;
+  let allPeople = everyone();
+  return allPeople.filter((name) => 
+  name.split(' ')[1].toUpperCase().includes("S"))
 }
 
+
+
 function surnameWithA() {
-  let surnameWithA = [];
-  got.houses.forEach((house) => {
-    for (let i = 0; i < house.people.length; i++) {
-      if (
-        house.people[i].name.split(" ")
-          [house.people[i].name.split(" ").length - 1].includes("A")
-      ) {
-        surnameWithA.push(house.people[i].name);
-      }
-    }
-  });
-  return surnameWithA;
+  let allPeople = everyone();
+  return allPeople.filter((name) => 
+  name.split(' ')[1].toUpperCase().includes("S"))
 }
 
 function peopleNameOfAllHouses() {
@@ -134,5 +130,6 @@ console.log(surnameWithA());
 console.log(peopleNameOfAllHouses());
 // Output should be
 // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+
 
 
