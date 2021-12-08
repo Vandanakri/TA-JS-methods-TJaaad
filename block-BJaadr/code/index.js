@@ -58,7 +58,7 @@ function nameWithA() {
 function surnameWithS() {
   return got.houses.reduce((acc,cv) => {
     for(i = 0; i < cv.people.length; i++) {
-      if(cv.people[i].name.split(' ').toUpperCase().includes("S")) {
+      if(cv.people[i].name.split(' ')[1].toUpperCase().includes("S")) {
         acc = acc.concat(cv.people[i].name)
       }
     }
@@ -67,25 +67,25 @@ function surnameWithS() {
 }
 
 function surnameWithA() {
-  // your code goes here
+
+    return got.houses.reduce((acc,cv) => {
+      for(i = 0; i < cv.people.length; i++) {
+        if(cv.people[i].name.split(' ')[1].toUpperCase().includes("A")) {
+          acc = acc.concat(cv.people[i].name)
+        }
+      }
+      return acc;
+    },[])
 }
 
 
 
 function peopleNameOfAllHouses() {
-  let Obj = {};
-  got.houses.forEach((house) => {
-    Obj[house.name] = house.people.map((prsn) => prsn.name);
-  });
-  return Obj;
-}
-
-
-function peopleNameOfAllHouses() {
-  got.houses.reduce((acc,cv) => {
+  return got.houses.reduce((acc,cv) => {
     acc[cv.name] = cv.people.map((prsn) => prsn.name);
+    return acc;
   },{});
-  return acc
+  
 }
 
 // Testing your result after writing your function
@@ -119,4 +119,5 @@ console.log(surnameWithA());
 console.log(peopleNameOfAllHouses());
 // Output should be
 // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+
 
