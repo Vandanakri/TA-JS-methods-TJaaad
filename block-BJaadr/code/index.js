@@ -1,35 +1,91 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
 
 function countAllPeople() {
-  // your code goes here
+  return got.houses.reduce((acc, cv) => {
+    acc += cv.people.length
+    return acc
+
+  }, 0)
 }
+
 
 function peopleByHouses() {
-  // your code goes here
+  return got.houses.reduce((acc, cv) => {
+    acc[cv.name] = cv.people.length
+    return acc;
+  }, {})
 }
+
+
+
 
 function everyone() {
-  // your code goes here
+  return got.houses.reduce((acc, cv) => {
+    for (i = 0; i < cv.people.length; i++) {
+      acc = acc.concat(cv.people[i].name);
+    }
+    return acc;
+  }, []);
 }
 
+
+
 function nameWithS() {
-  // your code goes here
+  return got.houses.reduce((acc, cv) => {
+    for (i = 0; i < cv.people.length; i++) {
+      if (cv.people[i].name.toUpperCase().includes("S")) {
+        acc = acc.concat(cv.people[i].name);
+      }
+    }
+    return acc;
+  }, []);
 }
 
 function nameWithA() {
-  // your code goes here
+  return got.houses.reduce((acc,cv) => {
+    for(i = 0; i < cv.people.length; i++) {
+      if(cv.people[i].name.toUpperCase().includes("A")) {
+        acc = acc.concat(cv.people[i].name)
+      }
+    }
+    return acc;
+  },[])
 }
 
+
+
+
 function surnameWithS() {
-  // your code goes here
+  return got.houses.reduce((acc,cv) => {
+    for(i = 0; i < cv.people.length; i++) {
+      if(cv.people[i].name.split(' ').toUpperCase().includes("S")) {
+        acc = acc.concat(cv.people[i].name)
+      }
+    }
+    return acc;
+  },[])
 }
 
 function surnameWithA() {
   // your code goes here
 }
 
+
+
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let Obj = {};
+  got.houses.forEach((house) => {
+    Obj[house.name] = house.people.map((prsn) => prsn.name);
+  });
+  return Obj;
+}
+
+
+function peopleNameOfAllHouses() {
+  got.houses.reduce((acc,cv) => {
+    acc[cv.name] = cv.people.map((prsn) => prsn.name);
+  },{});
+  return acc
 }
 
 // Testing your result after writing your function
@@ -63,3 +119,4 @@ console.log(surnameWithA());
 console.log(peopleNameOfAllHouses());
 // Output should be
 // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+
