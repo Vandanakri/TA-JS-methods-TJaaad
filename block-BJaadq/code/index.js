@@ -1,35 +1,106 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
 function countAllPeople() {
-  // your code goes here
+  let count = 0;
+  got.houses.forEach((house) => {
+    count += house.people.length
+  });
+  return count;
+}
+
+
+
+function countAllPeople(){
+  let count = 0;
+  got.houses.forEach((house) => {
+    house.people.forEach((names) => {
+      count += 1
+    })
+  })
+  return count;
 }
 
 function peopleByHouses() {
-  // your code goes here
+  let obj = {};
+  got.houses.forEach((house) => {
+    obj[house.name] = house.people.length
+  })
+return obj;
 }
 
 function everyone() {
-  // your code goes here
+  let everyPerson = [];
+  got.houses.forEach((house) => {
+    for (let i = 0; i < house.people.length; i++) {
+      everyPerson.push(house.people[i].name);
+    }
+  });
+  return everyPerson;
 }
 
 function nameWithS() {
-  // your code goes here
+  let startWith = [];
+  got.houses.forEach((house) => {
+    for(let i = 0; i < house.people.length; i++) {
+      if(house.people[i].name.toUpperCase().includes('S')) {
+        startWith.push(house.people[i].name);
+      }
+    }
+  })
+  return startWith;
 }
 
 function nameWithA() {
-  // your code goes here
+  let startWith = [];
+  got.houses.forEach((house) => {
+    for(let i = 0; i < house.people.length; i++) {
+      if(house.people[i].name.toUpperCase().includes('A')) {
+        startWith.push(house.people[i].name);
+      }
+    }
+  })
+  return startWith;
 }
 
+
+
+
 function surnameWithS() {
-  // your code goes here
+  let surNameWithS = [];
+  got.houses.forEach((house) => {
+    for (let i = 0; i < house.people.length; i++) {
+      if (
+        house.people[i].name.split(" ")
+          [house.people[i].name.split(" ").length - 1].includes("S")
+      ) {
+        surNameWithS.push(house.people[i].name);
+      }
+    }
+  });
+  return surNameWithS;
 }
 
 function surnameWithA() {
-  // your code goes here
+  let surnameWithA = [];
+  got.houses.forEach((house) => {
+    for (let i = 0; i < house.people.length; i++) {
+      if (
+        house.people[i].name.split(" ")
+          [house.people[i].name.split(" ").length - 1].includes("A")
+      ) {
+        surnameWithA.push(house.people[i].name);
+      }
+    }
+  });
+  return surnameWithA;
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let Obj = {};
+  got.houses.forEach((house) => {
+    Obj[house.name] = house.people.map((prsn) => prsn.name);
+  });
+  return Obj;
 }
 
 // Testing your result after writing your function
@@ -63,3 +134,5 @@ console.log(surnameWithA());
 console.log(peopleNameOfAllHouses());
 // Output should be
 // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+
+
