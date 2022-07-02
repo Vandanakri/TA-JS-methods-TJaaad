@@ -276,6 +276,16 @@ console.log(newArr);
       { name: 'Donald', grade: 5, sex: 'M' },
     ];
 */
+ function filterMale(grades){
+  let arr = [];
+  for(let i = 0; i < grades.length; i++){
+      if(isMale(grades[i])){
+        arr.push(grades[i])
+      }
+  }
+  console.log(arr);
+ }
+
 
 /*
   Create a function named filterFemale which accepts:
@@ -295,6 +305,16 @@ console.log(newArr);
       { name: 'Jane', grade: 9, sex: 'F' },
     ]
 */
+
+function filterFemale(grades){
+  let arr = [];
+  for(let i = 0; i < grades.length; i++){
+      if(isFemale(grades[i])){
+        arr.push(grades[i])
+      }
+  }
+  console.log(arr);
+ }
 
 /*
   Create a function named filterGradeA which accepts:
@@ -316,6 +336,16 @@ console.log(newArr);
     ]
 */
 
+function filterGradeA(grades){
+  let arr = [];
+  for(let i = 0; i < grades.length; i++){
+      if(isGradeA(grades[i])){
+        arr.push(grades[i])
+      }
+  }
+  console.log(arr);
+ }
+
 /*
   Create a function named filterGradeB which accepts:
     - an array of objects
@@ -335,6 +365,16 @@ console.log(newArr);
     ]
 */
 
+function filterGradeB(grades){
+  let arr = [];
+  for(let i = 0; i < grades.length; i++){
+      if(isGradeB(grades[i])){
+        arr.push(grades[i])
+      }
+  }
+  console.log(arr);
+ }
+
 /*
   Create a function named filterGradeC which accepts:
     - an array of objects
@@ -352,6 +392,15 @@ console.log(newArr);
       { name: 'Donald', grade: 5, sex: 'M' },
     ]
 */
+function filterGradeC(grades){
+  let arr = [];
+  for(let i = 0; i < grades.length; i++){
+      if(isGradeC(grades[i])){
+        arr.push(grades[i])
+      }
+  }
+  console.log(arr);
+ }
 
 /*
 We are repeating lots of code in above functions like filterGradeC, filterGradeB, filterGradeA, filterAdult. We will fix
@@ -373,6 +422,9 @@ filter is a higher order function.
     console.log(filter(grade, isGradeB));
     console.log(filter(grade, isGradeC));
 */
+function filter(arr,cb){
+  return cb(arr);
+ }
 
 /*
   Create a function named multiplyBy which accepts:
@@ -392,4 +444,13 @@ filter is a higher order function.
     console.log(multiplyByFive(20)); // 180
     console.log(multiplyByFive(5)); // 45
 */
+
+function multiplyBy(num) {
+  return function(num2) {
+    return num * num2;
+  }
+}
+let multiplyByFive = multiplyBy(10);
+let multiplyByNine = multiplyBy(9);
+
 
